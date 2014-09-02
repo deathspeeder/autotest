@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="pathinfo autotest">
+	<test verbose="2" name="com.lumanmed.pathinfo.autotest.AppTest" annotations="JDK">
+		<classes>
+			<class name="com.lumanmed.pathinfo.autotest.AppTest" />
+		</classes>
+	</test>
+</suite>
