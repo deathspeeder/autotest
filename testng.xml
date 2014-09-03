@@ -1,8 +1,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="pathinfo autotest">
-	<test verbose="2" name="com.lumanmed.pathinfo.autotest.AppTest" annotations="JDK">
+	<parameter name="pathinfoUrl" value="http://localhost:8080/pathinfo/"></parameter>
+	<test verbose="2" name="com.lumanmed.pathinfo.autotest.UserTest"
+		annotations="JDK">
 		<classes>
-			<class name="com.lumanmed.pathinfo.autotest.AppTest" />
+			<class name="com.lumanmed.pathinfo.autotest.UserTest" />
 		</classes>
 	</test>
 </suite>
