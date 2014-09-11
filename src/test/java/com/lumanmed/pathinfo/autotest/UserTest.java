@@ -31,7 +31,7 @@ public class UserTest extends BaseTest {
 			driver.get(pathinfoUrl + "change_locale/zh_CN?url=" + pathinfoUrl);
 		}
 		
-		login("thinkgem", "admin");
+		login(adminUser, adminPassword);
 		assertExists("#menu");
 	}
 	

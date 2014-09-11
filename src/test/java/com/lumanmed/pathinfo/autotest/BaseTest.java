@@ -3,6 +3,9 @@
  */
 package com.lumanmed.pathinfo.autotest;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import junit.framework.Assert;
 
 import org.openqa.selenium.By;
@@ -20,13 +23,19 @@ import org.testng.annotations.Parameters;
  *
  */
 public abstract class BaseTest {
+
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd-HH:mm:ss:SSS");
 	protected WebDriver driver;
 	protected String pathinfoUrl;
+	protected String adminUser;
+	protected String adminPassword;
 
-	@Parameters({"pathinfoUrl"})
+	@Parameters({"pathinfoUrl", "adminUser", "adminPassword"})
 	@BeforeTest
-	public void beforeTest(String pathinfoUrl) {
+	public void beforeTest(String pathinfoUrl, String adminUser, String adminPassword) {
 		this.pathinfoUrl = pathinfoUrl;
+		this.adminUser = adminUser;
+		this.adminPassword = adminPassword;
 		driver = new FirefoxDriver();
 	}
 
@@ -44,9 +53,17 @@ public abstract class BaseTest {
 	public void afterTest() {
 		driver.quit();
 	}
+	
+	protected String currentTimeString() {
+		return sdf.format(new Date());
+	}
+	
+	protected void goTo(String relativePath) {
+		driver.get(pathinfoUrl + relativePath);
+	}
 
 	protected void goToMainPage() {
-		driver.get(pathinfoUrl);
+		goTo("");
 	}
 	
 	protected void login(String username, String password) {
@@ -56,8 +73,7 @@ public abstract class BaseTest {
 	}
 	
 	protected void logout() {
-
-		driver.get(pathinfoUrl + "a/logout");
+		goTo("a/logout");
 	}
 	
 	protected void assertExists(String cssSelector) {
